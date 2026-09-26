@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Train and evaluate the full CR-BSRO model."""
+"""Train and evaluate PRCast."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 
-from cr_bsro.data import (
+from prcast.data import (
     DATASETS,
     LONG_HORIZONS,
     PEMS_HORIZONS,
@@ -25,7 +25,7 @@ from cr_bsro.data import (
     load_dataset,
     window_starts,
 )
-from cr_bsro.model import build_model
+from prcast.model import build_model
 
 
 ROOT = Path(__file__).resolve().parent
@@ -469,7 +469,7 @@ def smoke_test() -> None:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="CR-BSRO experiment runner")
+    parser = argparse.ArgumentParser(description="PRCast experiment runner")
     parser.add_argument("--data-root", type=Path, default=Path("data"))
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     parser.add_argument("--datasets", nargs="+", choices=DATASETS, default=list(DATASETS))

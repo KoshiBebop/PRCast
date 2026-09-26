@@ -2,7 +2,7 @@
 
 ## Main experiment
 
-PRCast runs the full CR-BSRO multivariate forecasting model with one fixed
+PRCast runs a multivariate forecasting model with one fixed
 architecture. The benchmark covers 11 datasets, four prediction horizons per
 dataset, and seeds 2024, 2025, and 2026. Validation selects the checkpoint;
 the test split is evaluated once per run. The [main results](RESULTS.md) and

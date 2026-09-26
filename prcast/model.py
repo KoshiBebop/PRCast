@@ -1,4 +1,4 @@
-"""CR-BSRO forecasting model."""
+"""PRCast forecasting model."""
 
 from __future__ import annotations
 
@@ -217,12 +217,12 @@ class CausalPhaseProjector(nn.Module):
         return forecast, reliability, history_prior
 
 
-class CRBSRO(nn.Module):
+class PRCast(nn.Module):
     """The full forecasting architecture."""
 
     def __init__(self, config):
         super().__init__()
-        self.architecture_id = "CR-BSRO"
+        self.architecture_id = "PRCast"
         self.seq_len = int(config.seq_len)
         self.pred_len = int(config.pred_len)
         channels = int(config.enc_in)
@@ -522,7 +522,7 @@ class CRBSRO(nn.Module):
         x_mark_future: Optional[torch.Tensor] = None,
     ) -> torch.Tensor:
         if x_mark is None or x_mark_future is None:
-            raise ValueError("CR-BSRO requires historical and future markers")
+            raise ValueError("PRCast requires historical and future markers")
 
         output, calendar, stdev, reliability, gate = self._calendar_terms(
             x, x_mark, x_mark_future
@@ -541,5 +541,5 @@ class CRBSRO(nn.Module):
         return self.forecast(x_enc, x_mark_enc, x_mark_dec)
 
 
-def build_model(config) -> CRBSRO:
-    return CRBSRO(config)
+def build_model(config) -> PRCast:
+    return PRCast(config)

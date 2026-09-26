@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cr-bsro"
+name = "prcast"
 version = "0.1.0"
 description = "Causal reliability-controlled structured forecasting"
 requires-python = ">=3.10"
@@ -14,4 +14,4 @@ dependencies = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["cr_bsro*"]
+include = ["prcast*"]
